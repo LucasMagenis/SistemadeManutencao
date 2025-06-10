@@ -1,0 +1,75 @@
+/* CRIA A TABELA DE EQUIPAMENTOS /*
+CREATE TABLE Equipamento (
+    IdEquipamento INT PRIMARY KEY AUTO_INCREMENT,
+    Nome_equipamento VARCHAR(100),
+    Descricao TEXT,
+    Status VARCHAR(50),
+    Tipo_equipamento VARCHAR(50)
+);
+
+/* CRIA A TABELA DE TÉCNICOS /*
+CREATE TABLE Tecnico (
+    IdTecnico INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(100),
+    Especialidade VARCHAR(100),
+    Contato VARCHAR(100)
+);
+
+/* CRIA A TABELA DE MANUTEÇÃO /*
+CREATE TABLE Manutencao (
+    IdManutencao INT PRIMARY KEY AUTO_INCREMENT,
+    IdEquipamento INT,
+    IdTecnico INT,
+    Tipo_manutencao VARCHAR(50),
+    Descricao TEXT,
+    Status_manutencao VARCHAR(50),
+    FOREIGN KEY (IdEquipamento) REFERENCES Equipamento(IdEquipamento),
+    FOREIGN KEY (IdTecnico) REFERENCES Tecnico(IdTecnico)
+);
+
+/* CRIA A TABELA DE PEÇAS /*
+CREATE TABLE Peca (
+    IdPeca INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(100),
+    Descricao TEXT,
+    Quantidade_estoque INT,
+    Custo_unitario DECIMAL(10,2)
+);
+
+/* CRIA A TABELA DE HISTÓRICO PREVENTIVO /*
+CREATE TABLE Historico (
+    IdHistorico INT PRIMARY KEY AUTO_INCREMENT,
+    IdEquipamento INT,
+    Tipo_manutencao VARCHAR(50),
+    data_ultimo_servico DATE,
+    data_proximo_servico DATE,
+    FOREIGN KEY (IdEquipamento) REFERENCES Equipamento(IdEquipamento)
+);
+
+/* CRIA A TABELA DE REGISTRO DE FALHAS /*
+CREATE TABLE Falha (
+    IdFalha INT PRIMARY KEY AUTO_INCREMENT,
+    IdEquipamento INT,
+    Descricao_falha TEXT,
+    Data_falha DATE,
+    Status VARCHAR(50),
+    FOREIGN KEY (IdEquipamento) REFERENCES Equipamento(IdEquipamento)
+);
+
+/* CRIA A TABELA DE ORÇAMENTOS /*
+CREATE TABLE Orcamento (
+    IdOrcamento INT PRIMARY KEY AUTO_INCREMENT,
+    IdManutencao INT,
+    Descricao TEXT,
+    Valor_total DECIMAL(10,2),
+    Data_orcamento DATE,
+    FOREIGN KEY (IdManutencao) REFERENCES Manutencao(IdManutencao)
+);
+
+/* CRIA A TABELA DE FORNECEDOR /*
+CREATE TABLE Fornecedor (
+    IdFornecedor INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(100),
+    CNPJ VARCHAR(20),
+    Contato VARCHAR(100)
+);

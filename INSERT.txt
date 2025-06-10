@@ -1,0 +1,106 @@
+-- Equipamentos
+INSERT INTO Equipamento (Nome_equipamento, Descricao, Status, Tipo_equipamento) VALUES
+('Compressor A1', 'Compressor industrial de ar', 'Ativo', 'Industrial'),
+('Gerador GX3000', 'Gerador de energia portátil', 'Ativo', 'Elétrico'),
+('Esteira 200', 'Esteira transportadora', 'Inativo', 'Mecânico'),
+('Torno T1000', 'Torno mecânico para usinagem', 'Ativo', 'Mecânico'),
+('Caldeira CL-500', 'Caldeira de alta pressão', 'Ativo', 'Térmico'),
+('Motor Diesel 50HP', 'Motor usado em máquinas pesadas', 'Inativo', 'Combustão'),
+('Robô Soldador XR', 'Braço robótico para soldagem', 'Ativo', 'Automatizado'),
+('Empilhadeira EFX', 'Empilhadeira elétrica 2T', 'Ativo', 'Elétrico'),
+('Injetora ITP', 'Máquina injetora de plástico', 'Ativo', 'Plástico'),
+('Furadeira F-300', 'Furadeira industrial', 'Ativo', 'Mecânico');
+
+-- Técnicos
+INSERT INTO Tecnico (Nome, Especialidade, Contato) VALUES
+('Carlos Silva', 'Mecânica Industrial', 'carlos@empresa.com'),
+('Ana Lima', 'Elétrica', 'ana@empresa.com'),
+('João Pedro', 'Automação', 'joao@empresa.com'),
+('Fernanda Rocha', 'Soldagem', 'fernanda@empresa.com'),
+('Marcos Aurélio', 'Manutenção Geral', 'marcos@empresa.com'),
+('Patrícia Nunes', 'Hidráulica', 'patricia@empresa.com'),
+('Ricardo Alves', 'Caldeiras', 'ricardo@empresa.com'),
+('Beatriz Costa', 'Eletrônica', 'beatriz@empresa.com'),
+('Thiago Souza', 'Programação CNC', 'thiago@empresa.com'),
+('Luciana Ramos', 'Controle de Qualidade', 'luciana@empresa.com');
+
+-- Peças
+INSERT INTO Peca (Nome, Descricao, Quantidade_estoque, Custo_unitario) VALUES
+('Válvula de Pressão', 'Usada em caldeiras', 15, 120.00),
+('Sensor de Temperatura', 'Sensor digital', 40, 80.00),
+('Correia Transportadora', 'Correia de borracha', 10, 150.00),
+('Placa Eletrônica', 'Controle de robô soldador', 25, 250.00),
+('Filtro de Óleo', 'Filtro padrão motor diesel', 30, 45.00),
+('Pistão Hidráulico', 'Pistão de 2T', 12, 400.00),
+('Parafuso M16', 'Parafuso industrial', 500, 1.00),
+('Chave de Nível', 'Controle de nível de água', 20, 60.00),
+('Cabo de Força 220V', 'Cabo industrial reforçado', 100, 15.00),
+('Placa CNC', 'Placa de controle CNC', 10, 800.00);
+
+-- Fornecedores
+INSERT INTO Fornecedor (Nome, CNPJ, Contato) VALUES
+('TechParts Ltda', '12.345.678/0001-00', 'contato@techparts.com.br'),
+('Indústria Refrigeração', '98.765.432/0001-99', 'vendas@indrefri.com.br'),
+('Mecânica Brasil', '34.567.890/0001-55', 'mecanica@brasil.com'),
+('Eletrônica Fina', '11.222.333/0001-44', 'suporte@eletronicafina.com'),
+('AutoPower Peças', '88.999.777/0001-66', 'contato@autopower.com'),
+('Soldatec', '22.333.444/0001-77', 'vendas@soldatec.com'),
+('Caldeiraria Nacional', '55.666.777/0001-88', 'cnacional@caldeiras.com'),
+('Equipamentos Pesados LTDA', '00.111.222/0001-99', 'ep@equipesp.com'),
+('CNC Master', '09.876.543/0001-33', 'atendimento@cncmaster.com'),
+('Distribuidora de Ferramentas', '44.555.666/0001-22', 'contato@dferramentas.com');
+
+
+-- === Continuação ===
+
+-- Manutencao
+INSERT INTO Manutencao (IdEquipamento, IdTecnico, Tipo_manutencao, Descricao, Status_manutencao) VALUES
+(1, 1, 'Preventiva', 'Verificação geral do compressor', 'Concluída'),
+(2, 2, 'Corretiva', 'Substituição de fusível queimado', 'Pendente'),
+(3, 3, 'Preventiva', 'Lubrificação de peças móveis', 'Concluída'),
+(4, 4, 'Corretiva', 'Troca de motor queimado', 'Em andamento'),
+(5, 5, 'Preventiva', 'Limpeza interna da caldeira', 'Concluída'),
+(6, 6, 'Corretiva', 'Substituição de filtro de óleo', 'Pendente'),
+(7, 7, 'Preventiva', 'Atualização de firmware do robô', 'Concluída'),
+(8, 8, 'Corretiva', 'Reparo no circuito elétrico', 'Em andamento'),
+(9, 9, 'Preventiva', 'Checagem de sensores', 'Concluída'),
+(10, 10, 'Corretiva', 'Troca do mandril', 'Pendente');
+
+-- Falha
+INSERT INTO Falha (IdEquipamento, Descricao_falha, Data_falha, Status) VALUES
+(1, 'Compressor não liga', '2024-10-01', 'Resolvido'),
+(2, 'Gerador com ruído alto', '2024-10-05', 'Em análise'),
+(3, 'Esteira parou subitamente', '2024-10-10', 'Resolvido'),
+(4, 'Torno com vibração excessiva', '2024-10-12', 'Pendente'),
+(5, 'Pressão instável na caldeira', '2024-10-15', 'Resolvido'),
+(6, 'Motor aquecendo demais', '2024-10-17', 'Resolvido'),
+(7, 'Falha no braço de solda', '2024-10-20', 'Em análise'),
+(8, 'Falha no painel de comando', '2024-10-22', 'Pendente'),
+(9, 'Erro no sensor de temperatura', '2024-10-25', 'Resolvido'),
+(10, 'Furadeira travando', '2024-10-28', 'Pendente');
+
+-- Orcamento
+INSERT INTO Orcamento (IdManutencao, Descricao, Valor_total, Data_orcamento) VALUES
+(1, 'Serviço preventivo completo', 500.00, '2024-10-02'),
+(2, 'Substituição de componentes elétricos', 300.00, '2024-10-06'),
+(3, 'Lubrificantes industriais', 120.00, '2024-10-11'),
+(4, 'Motor novo e instalação', 1500.00, '2024-10-13'),
+(5, 'Limpeza especializada de caldeira', 450.00, '2024-10-16'),
+(6, 'Filtro de óleo + mão de obra', 180.00, '2024-10-18'),
+(7, 'Atualização de sistema do robô', 650.00, '2024-10-21'),
+(8, 'Reparo elétrico completo', 820.00, '2024-10-23'),
+(9, 'Manutenção em sensores e calibragem', 260.00, '2024-10-26'),
+(10, 'Troca de mandril + regulagem', 330.00, '2024-10-29');
+
+-- Historico
+INSERT INTO Historico (IdEquipamento, Tipo_manutencao, data_ultimo_servico, data_proximo_servico) VALUES
+(1, 'Preventiva', '2024-10-01', '2024-12-01'),
+(2, 'Corretiva', '2024-10-05', '2025-01-05'),
+(3, 'Preventiva', '2024-10-10', '2024-12-10'),
+(4, 'Corretiva', '2024-10-12', '2025-01-12'),
+(5, 'Preventiva', '2024-10-15', '2025-01-15'),
+(6, 'Corretiva', '2024-10-17', '2025-01-17'),
+(7, 'Preventiva', '2024-10-20', '2024-12-20'),
+(8, 'Corretiva', '2024-10-22', '2025-01-22'),
+(9, 'Preventiva', '2024-10-25', '2024-12-25'),
+(10, 'Corretiva', '2024-10-28', '2025-01-28');
