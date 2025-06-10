@@ -1,4 +1,4 @@
--- Equipamentos
+/* INSERE DADOS DOS EQUIPAMENTOS /*
 INSERT INTO Equipamento (Nome_equipamento, Descricao, Status, Tipo_equipamento) VALUES
 ('Compressor A1', 'Compressor industrial de ar', 'Ativo', 'Industrial'),
 ('Gerador GX3000', 'Gerador de energia portátil', 'Ativo', 'Elétrico'),
@@ -11,7 +11,7 @@ INSERT INTO Equipamento (Nome_equipamento, Descricao, Status, Tipo_equipamento) 
 ('Injetora ITP', 'Máquina injetora de plástico', 'Ativo', 'Plástico'),
 ('Furadeira F-300', 'Furadeira industrial', 'Ativo', 'Mecânico');
 
--- Técnicos
+/* INSERE DADOS DOS TÉCNICOS /*
 INSERT INTO Tecnico (Nome, Especialidade, Contato) VALUES
 ('Carlos Silva', 'Mecânica Industrial', 'carlos@empresa.com'),
 ('Ana Lima', 'Elétrica', 'ana@empresa.com'),
@@ -24,7 +24,7 @@ INSERT INTO Tecnico (Nome, Especialidade, Contato) VALUES
 ('Thiago Souza', 'Programação CNC', 'thiago@empresa.com'),
 ('Luciana Ramos', 'Controle de Qualidade', 'luciana@empresa.com');
 
--- Peças
+/* INSERE DADOS DAS PEÇAS /*
 INSERT INTO Peca (Nome, Descricao, Quantidade_estoque, Custo_unitario) VALUES
 ('Válvula de Pressão', 'Usada em caldeiras', 15, 120.00),
 ('Sensor de Temperatura', 'Sensor digital', 40, 80.00),
@@ -50,10 +50,7 @@ INSERT INTO Fornecedor (Nome, CNPJ, Contato) VALUES
 ('CNC Master', '09.876.543/0001-33', 'atendimento@cncmaster.com'),
 ('Distribuidora de Ferramentas', '44.555.666/0001-22', 'contato@dferramentas.com');
 
-
--- === Continuação ===
-
--- Manutencao
+/* INSERE DADOS DA MANUTENÇÃO /*
 INSERT INTO Manutencao (IdEquipamento, IdTecnico, Tipo_manutencao, Descricao, Status_manutencao) VALUES
 (1, 1, 'Preventiva', 'Verificação geral do compressor', 'Concluída'),
 (2, 2, 'Corretiva', 'Substituição de fusível queimado', 'Pendente'),
@@ -66,7 +63,7 @@ INSERT INTO Manutencao (IdEquipamento, IdTecnico, Tipo_manutencao, Descricao, St
 (9, 9, 'Preventiva', 'Checagem de sensores', 'Concluída'),
 (10, 10, 'Corretiva', 'Troca do mandril', 'Pendente');
 
--- Falha
+/* INSERE DADOS DAS FALHAS /*
 INSERT INTO Falha (IdEquipamento, Descricao_falha, Data_falha, Status) VALUES
 (1, 'Compressor não liga', '2024-10-01', 'Resolvido'),
 (2, 'Gerador com ruído alto', '2024-10-05', 'Em análise'),
@@ -79,7 +76,7 @@ INSERT INTO Falha (IdEquipamento, Descricao_falha, Data_falha, Status) VALUES
 (9, 'Erro no sensor de temperatura', '2024-10-25', 'Resolvido'),
 (10, 'Furadeira travando', '2024-10-28', 'Pendente');
 
--- Orcamento
+/* INSERE DADOS DOS ORÇAMENTOS /*
 INSERT INTO Orcamento (IdManutencao, Descricao, Valor_total, Data_orcamento) VALUES
 (1, 'Serviço preventivo completo', 500.00, '2024-10-02'),
 (2, 'Substituição de componentes elétricos', 300.00, '2024-10-06'),
@@ -92,7 +89,7 @@ INSERT INTO Orcamento (IdManutencao, Descricao, Valor_total, Data_orcamento) VAL
 (9, 'Manutenção em sensores e calibragem', 260.00, '2024-10-26'),
 (10, 'Troca de mandril + regulagem', 330.00, '2024-10-29');
 
--- Historico
+/* INSERE DADOS DOS HISTÓRICOS /*
 INSERT INTO Historico (IdEquipamento, Tipo_manutencao, data_ultimo_servico, data_proximo_servico) VALUES
 (1, 'Preventiva', '2024-10-01', '2024-12-01'),
 (2, 'Corretiva', '2024-10-05', '2025-01-05'),
