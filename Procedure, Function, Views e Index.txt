@@ -1,0 +1,102 @@
+/* PROCEDURE /*
+/* REGISTRAR MANUTENÇÃO /*
+ 
+CREATE OR REPLACE PROCEDURE registrar_manutencao(
+    p_id_equipamento INT,
+    p_id_tecnico INT,
+    p_tipo_manutencao VARCHAR,
+    p_descricao TEXT
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    INSERT INTO manutencao (idequipamento, idtecnico, tipo_manutencao, descricao, status_manutencao)
+    VALUES (p_id_equipamento, p_id_tecnico, p_tipo_manutencao, p_descricao, 'Pendente');
+END;
+$$;
+
+/* ATUALIZAR ESTOQUE DE PEÇAS /*
+CREATE OR REPLACE PROCEDURE atualizar_estoque(
+    p_id_peca INT,
+    p_quantidade_utilizada INT
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    UPDATE peca
+    SET quantidade_estoque = quantidade_estoque - p_quantidade_utilizada
+    WHERE idpeca = p_id_peca;
+END;
+$$;
+
+
+/* FUNCTION /*
+/* CUSTO MÉDIO DAS PEÇAS /*
+
+CREATE OR REPLACE FUNCTION custo_medio_pecas()
+RETURNS NUMERIC(10,2)
+LANGUAGE sql
+AS $$
+    SELECT AVG(custo_unitario)::NUMERIC(10,2) FROM peca;
+$$;
+
+/* TRIGGER /*
+/* ATUALIZAR STATUS DO EQUIPAMENTO APÓS UMA FALHA /*
+
+CREATE OR REPLACE FUNCTION atualizar_status_equipamento()
+RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE equipamento
+    SET status = 'Com Falha'
+    WHERE idequipamento = NEW.idequipamento;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_status_falha
+AFTER INSERT ON falha
+FOR EACH ROW
+EXECUTE FUNCTION atualizar_status_equipamento();
+
+/* VIEWS /*
+
+CREATE OR REPLACE VIEW vw_manutencoes_pendentes AS
+SELECT 
+    m.idmanutencao,
+    e.nome_equipamento,
+    t.nome AS nome_tecnico,
+    m.tipo_manutencao,
+    m.descricao
+FROM manutencao m
+JOIN equipamento e ON m.idequipamento = e.idequipamento
+JOIN tecnico t ON m.idtecnico = t.idtecnico
+WHERE m.status_manutencao = 'Pendente';
+
+CREATE OR REPLACE VIEW vw_historico_preventivo AS
+SELECT 
+    h.idhistorico,
+    e.nome_equipamento,
+    h.tipo_manutencao,
+    h.data_ultimo_servico,
+    h.data_proximo_servico
+FROM historico h
+JOIN equipamento e ON h.idequipamento = e.idequipamento;
+
+CREATE OR REPLACE VIEW vw_orcamentos AS
+SELECT 
+    o.idorcamento,
+    o.descricao,
+    o.valor_total,
+    o.data_orcamento,
+    e.nome_equipamento
+FROM orcamento o
+JOIN manutencao m ON o.idmanutencao = m.idmanutencao
+JOIN equipamento e ON m.idequipamento = e.idequipamento;
+
+/* INDEX /*
+
+CREATE INDEX idx_manutencao_equipamento ON manutencao(idequipamento);
+CREATE INDEX idx_manutencao_tecnico ON manutencao(idtecnico);
+CREATE INDEX idx_falha_equipamento ON falha(idequipamento);
+CREATE INDEX idx_historico_equipamento ON historico(idequipamento);
+CREATE INDEX idx_orcamento_manutencao ON orcamento(idmanutencao);

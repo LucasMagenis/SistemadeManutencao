@@ -1,0 +1,20 @@
+PROCEDURES E FUNÇÕES
+- registrar_manutencao: Registra novas manutenções;
+- custo_medio_pecas: Faz o preço médio de todas as peças;
+- atualizar_estoque: Mantem sempre o estoque atualizado.
+
+TRIGGER - trigger_status_falha: Altera o status em equipamentos quando apresentam falhas.
+
+VIEWS
+- vw_manutencoes_pendentes: Irá exibir todas as manutenções que estão pendentes;
+- vw_historico_preventivo: Mostra o histórico de manutenções preventivas;
+- vw_orcamentos: Apresenta informações do orçarmento.
+
+INDEX
+- idx_manutencao_equipamento;
+- idx_manutencao_tecnico;
+- idx_falha_equipamento;
+- idx_historico_equipamento;
+- idx_orcamento_manutencao.
+
+De modo geral, eles auxiliam na hora de fazer as buscas.
