@@ -1,75 +1,74 @@
-/* CRIA A TABELA DE EQUIPAMENTOS */
-CREATE TABLE Equipamento (
-    IdEquipamento SERIAL PRIMARY KEY,
-    Nome_equipamento VARCHAR(100),
-    Descricao TEXT,
-    Status VARCHAR(50),
-    Tipo_equipamento VARCHAR(50)
+-- Tabela Equipamento
+CREATE TABLE equipamento (
+    id UUID PRIMARY KEY,
+    nome VARCHAR(100),
+    modelo VARCHAR(100),
+    fabricante VARCHAR(100)
 );
 
-/* CRIA A TABELA DE TÉCNICOS */
-CREATE TABLE Tecnico (
-    IdTecnico SERIAL PRIMARY KEY,
-    Nome VARCHAR(100),
-    Especialidade VARCHAR(100),
-    Contato VARCHAR(100)
+-- Tabela Tecnico
+CREATE TABLE tecnico (
+    id UUID PRIMARY KEY,
+    nome VARCHAR(100),
+    especialidade VARCHAR(100),
+    contato VARCHAR(100)
 );
 
-/* CRIA A TABELA DE MANUTENÇÃO */
-CREATE TABLE Manutencao (
-    IdManutencao SERIAL PRIMARY KEY,
-    IdEquipamento INT,
-    IdTecnico INT,
-    Tipo_manutencao VARCHAR(50),
-    Descricao TEXT,
-    Status_manutencao VARCHAR(50),
-    FOREIGN KEY (IdEquipamento) REFERENCES Equipamento(IdEquipamento),
-    FOREIGN KEY (IdTecnico) REFERENCES Tecnico(IdTecnico)
+-- Tabela Manutencao
+CREATE TABLE manutencao (
+    id UUID PRIMARY KEY,
+    equipamento_id UUID NOT NULL,
+    tecnico_id UUID NOT NULL,
+    tipo_manutencao VARCHAR(50),
+    descricao TEXT,
+    status_manutencao VARCHAR(50),
+    CONSTRAINT fk_manutencao_equipamento FOREIGN KEY (equipamento_id) REFERENCES equipamento(id),
+    CONSTRAINT fk_manutencao_tecnico FOREIGN KEY (tecnico_id) REFERENCES tecnico(id)
 );
 
-/* CRIA A TABELA DE PEÇAS */
-CREATE TABLE Peca (
-    IdPeca SERIAL PRIMARY KEY,
-    Nome VARCHAR(100),
-    Descricao TEXT,
-    Quantidade_estoque INT,
-    Custo_unitario DECIMAL(10,2)
+-- Tabela Peca
+CREATE TABLE peca (
+    id UUID PRIMARY KEY,
+    nome VARCHAR(100),
+    descricao TEXT,
+    quantidade_estoque INT,
+    custo_unitario DECIMAL(10,2)
 );
 
-/* CRIA A TABELA DE HISTÓRICO PREVENTIVO */
-CREATE TABLE Historico (
-    IdHistorico SERIAL PRIMARY KEY,
-    IdEquipamento INT,
-    Tipo_manutencao VARCHAR(50),
+-- Tabela Historico (histórico preventivo)
+CREATE TABLE historico (
+    id UUID PRIMARY KEY,
+    equipamento_id UUID NOT NULL,
+    tipo_manutencao VARCHAR(50),
     data_ultimo_servico DATE,
     data_proximo_servico DATE,
-    FOREIGN KEY (IdEquipamento) REFERENCES Equipamento(IdEquipamento)
+    CONSTRAINT fk_historico_equipamento FOREIGN KEY (equipamento_id) REFERENCES equipamento(id)
 );
 
-/* CRIA A TABELA DE REGISTRO DE FALHAS */
-CREATE TABLE Falha (
-    IdFalha SERIAL PRIMARY KEY,
-    IdEquipamento INT,
-    Descricao_falha TEXT,
-    Data_falha DATE,
-    Status VARCHAR(50),
-    FOREIGN KEY (IdEquipamento) REFERENCES Equipamento(IdEquipamento)
+-- Tabela Falha (registro de falhas)
+CREATE TABLE falha (
+    id UUID PRIMARY KEY,
+    equipamento_id UUID NOT NULL,
+    descricao_falha TEXT,
+    data_falha DATE,
+    status VARCHAR(50),
+    CONSTRAINT fk_falha_equipamento FOREIGN KEY (equipamento_id) REFERENCES equipamento(id)
 );
 
-/* CRIA A TABELA DE ORÇAMENTOS */
-CREATE TABLE Orcamento (
-    IdOrcamento SERIAL PRIMARY KEY,
-    IdManutencao INT,
-    Descricao TEXT,
-    Valor_total DECIMAL(10,2),
-    Data_orcamento DATE,
-    FOREIGN KEY (IdManutencao) REFERENCES Manutencao(IdManutencao)
+-- Tabela Orcamento
+CREATE TABLE orcamento (
+    id UUID PRIMARY KEY,
+    manutencao_id UUID NOT NULL,
+    descricao TEXT,
+    valor_total DECIMAL(10,2),
+    data_orcamento DATE,
+    CONSTRAINT fk_orcamento_manutencao FOREIGN KEY (manutencao_id) REFERENCES manutencao(id)
 );
 
-/* CRIA A TABELA DE FORNECEDORES */
-CREATE TABLE Fornecedor (
-    IdFornecedor SERIAL PRIMARY KEY,
-    Nome VARCHAR(100),
-    CNPJ VARCHAR(20),
-    Contato VARCHAR(100)
+-- Tabela Fornecedor
+CREATE TABLE fornecedor (
+    id UUID PRIMARY KEY,
+    nome VARCHAR(100),
+    cnpj VARCHAR(20),
+    contato VARCHAR(100)
 );
