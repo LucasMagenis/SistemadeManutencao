@@ -1,23 +1,23 @@
-/* CRIA A TABELA DE EQUIPAMENTOS /*
+/* CRIA A TABELA DE EQUIPAMENTOS */
 CREATE TABLE Equipamento (
-    IdEquipamento INT PRIMARY KEY AUTO_INCREMENT,
+    IdEquipamento SERIAL PRIMARY KEY,
     Nome_equipamento VARCHAR(100),
     Descricao TEXT,
     Status VARCHAR(50),
     Tipo_equipamento VARCHAR(50)
 );
 
-/* CRIA A TABELA DE TÉCNICOS /*
+/* CRIA A TABELA DE TÉCNICOS */
 CREATE TABLE Tecnico (
-    IdTecnico INT PRIMARY KEY AUTO_INCREMENT,
+    IdTecnico SERIAL PRIMARY KEY,
     Nome VARCHAR(100),
     Especialidade VARCHAR(100),
     Contato VARCHAR(100)
 );
 
-/* CRIA A TABELA DE MANUTEÇÃO /*
+/* CRIA A TABELA DE MANUTENÇÃO */
 CREATE TABLE Manutencao (
-    IdManutencao INT PRIMARY KEY AUTO_INCREMENT,
+    IdManutencao SERIAL PRIMARY KEY,
     IdEquipamento INT,
     IdTecnico INT,
     Tipo_manutencao VARCHAR(50),
@@ -27,18 +27,18 @@ CREATE TABLE Manutencao (
     FOREIGN KEY (IdTecnico) REFERENCES Tecnico(IdTecnico)
 );
 
-/* CRIA A TABELA DE PEÇAS /*
+/* CRIA A TABELA DE PEÇAS */
 CREATE TABLE Peca (
-    IdPeca INT PRIMARY KEY AUTO_INCREMENT,
+    IdPeca SERIAL PRIMARY KEY,
     Nome VARCHAR(100),
     Descricao TEXT,
     Quantidade_estoque INT,
     Custo_unitario DECIMAL(10,2)
 );
 
-/* CRIA A TABELA DE HISTÓRICO PREVENTIVO /*
+/* CRIA A TABELA DE HISTÓRICO PREVENTIVO */
 CREATE TABLE Historico (
-    IdHistorico INT PRIMARY KEY AUTO_INCREMENT,
+    IdHistorico SERIAL PRIMARY KEY,
     IdEquipamento INT,
     Tipo_manutencao VARCHAR(50),
     data_ultimo_servico DATE,
@@ -46,9 +46,9 @@ CREATE TABLE Historico (
     FOREIGN KEY (IdEquipamento) REFERENCES Equipamento(IdEquipamento)
 );
 
-/* CRIA A TABELA DE REGISTRO DE FALHAS /*
+/* CRIA A TABELA DE REGISTRO DE FALHAS */
 CREATE TABLE Falha (
-    IdFalha INT PRIMARY KEY AUTO_INCREMENT,
+    IdFalha SERIAL PRIMARY KEY,
     IdEquipamento INT,
     Descricao_falha TEXT,
     Data_falha DATE,
@@ -56,9 +56,9 @@ CREATE TABLE Falha (
     FOREIGN KEY (IdEquipamento) REFERENCES Equipamento(IdEquipamento)
 );
 
-/* CRIA A TABELA DE ORÇAMENTOS /*
+/* CRIA A TABELA DE ORÇAMENTOS */
 CREATE TABLE Orcamento (
-    IdOrcamento INT PRIMARY KEY AUTO_INCREMENT,
+    IdOrcamento SERIAL PRIMARY KEY,
     IdManutencao INT,
     Descricao TEXT,
     Valor_total DECIMAL(10,2),
@@ -66,9 +66,9 @@ CREATE TABLE Orcamento (
     FOREIGN KEY (IdManutencao) REFERENCES Manutencao(IdManutencao)
 );
 
-/* CRIA A TABELA DE FORNECEDOR /*
+/* CRIA A TABELA DE FORNECEDORES */
 CREATE TABLE Fornecedor (
-    IdFornecedor INT PRIMARY KEY AUTO_INCREMENT,
+    IdFornecedor SERIAL PRIMARY KEY,
     Nome VARCHAR(100),
     CNPJ VARCHAR(20),
     Contato VARCHAR(100)
