@@ -2,53 +2,62 @@
 /* REGISTRAR MANUTENÇÃO /*
  
 CREATE OR REPLACE PROCEDURE registrar_manutencao(
-    p_id_equipamento INT,
-    p_id_tecnico INT,
-    p_tipo_manutencao VARCHAR,
-    p_descricao TEXT
+    p_id UUID,
+    p_equipamento_id UUID,
+    p_tecnico_id UUID,
+    p_tipo VARCHAR,
+    p_descricao TEXT,
+    p_status VARCHAR
 )
 LANGUAGE plpgsql
 AS $$
 BEGIN
-    INSERT INTO manutencao (idequipamento, idtecnico, tipo_manutencao, descricao, status_manutencao)
-    VALUES (p_id_equipamento, p_id_tecnico, p_tipo_manutencao, p_descricao, 'Pendente');
+    INSERT INTO manutencao (id, equipamento_id, tecnico_id, tipo_manutencao, descricao, status_manutencao)
+    VALUES (p_id, p_equipamento_id, p_tecnico_id, p_tipo, p_descricao, p_status);
 END;
 $$;
 
-/* ATUALIZAR ESTOQUE DE PEÇAS /*
-CREATE OR REPLACE PROCEDURE atualizar_estoque(
-    p_id_peca INT,
-    p_quantidade_utilizada INT
-)
-LANGUAGE plpgsql
-AS $$
-BEGIN
-    UPDATE peca
-    SET quantidade_estoque = quantidade_estoque - p_quantidade_utilizada
-    WHERE idpeca = p_id_peca;
-END;
-$$;
 
 
 /* FUNCTION /*
 /* CUSTO MÉDIO DAS PEÇAS /*
 
 CREATE OR REPLACE FUNCTION custo_medio_pecas()
-RETURNS NUMERIC(10,2)
-LANGUAGE sql
+RETURNS DECIMAL AS $$
+DECLARE
+    media DECIMAL;
+BEGIN
+    SELECT AVG(custo_unitario) INTO media FROM peca;
+    RETURN media;
+END;
+$$ LANGUAGE plpgsql;
+
+
+
+/* ATUALIZA ESTOQUE DE UMA PEÇA APÓS UTILIZAÇÂO */
+
+CREATE OR REPLACE PROCEDURE atualizar_estoque(p_id UUID, p_quantidade_usada INT)
+LANGUAGE plpgsql
 AS $$
-    SELECT AVG(custo_unitario)::NUMERIC(10,2) FROM peca;
+BEGIN
+    UPDATE peca
+    SET quantidade_estoque = quantidade_estoque - p_quantidade_usada
+    WHERE id = p_id;
+END;
 $$;
+
+
 
 /* TRIGGER /*
 /* ATUALIZAR STATUS DO EQUIPAMENTO APÓS UMA FALHA /*
 
-CREATE OR REPLACE FUNCTION atualizar_status_equipamento()
+CREATE OR REPLACE FUNCTION atualizar_status_equipamento_falha()
 RETURNS TRIGGER AS $$
 BEGIN
     UPDATE equipamento
-    SET status = 'Com Falha'
-    WHERE idequipamento = NEW.idequipamento;
+    SET modelo = CONCAT(modelo, ' - COM FALHA')
+    WHERE id = NEW.equipamento_id;
+
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -56,47 +65,38 @@ $$ LANGUAGE plpgsql;
 CREATE TRIGGER trigger_status_falha
 AFTER INSERT ON falha
 FOR EACH ROW
-EXECUTE FUNCTION atualizar_status_equipamento();
+EXECUTE FUNCTION atualizar_status_equipamento_falha();
+
+
 
 /* VIEWS /*
-
 CREATE OR REPLACE VIEW vw_manutencoes_pendentes AS
-SELECT 
-    m.idmanutencao,
-    e.nome_equipamento,
-    t.nome AS nome_tecnico,
-    m.tipo_manutencao,
-    m.descricao
+SELECT m.id, e.nome AS equipamento, t.nome AS tecnico, m.tipo_manutencao, m.status_manutencao
 FROM manutencao m
-JOIN equipamento e ON m.idequipamento = e.idequipamento
-JOIN tecnico t ON m.idtecnico = t.idtecnico
-WHERE m.status_manutencao = 'Pendente';
+JOIN equipamento e ON m.equipamento_id = e.id
+JOIN tecnico t ON m.tecnico_id = t.id
+WHERE m.status_manutencao ILIKE 'pendente';
+
 
 CREATE OR REPLACE VIEW vw_historico_preventivo AS
-SELECT 
-    h.idhistorico,
-    e.nome_equipamento,
-    h.tipo_manutencao,
-    h.data_ultimo_servico,
-    h.data_proximo_servico
+SELECT h.id, e.nome AS equipamento, h.tipo_manutencao, h.data_ultimo_servico, h.data_proximo_servico
 FROM historico h
-JOIN equipamento e ON h.idequipamento = e.idequipamento;
+JOIN equipamento e ON h.equipamento_id = e.id
+WHERE h.tipo_manutencao ILIKE 'preventiva';
+
 
 CREATE OR REPLACE VIEW vw_orcamentos AS
-SELECT 
-    o.idorcamento,
-    o.descricao,
-    o.valor_total,
-    o.data_orcamento,
-    e.nome_equipamento
+SELECT o.id, m.id AS manutencao_id, o.descricao, o.valor_total, o.data_orcamento
 FROM orcamento o
-JOIN manutencao m ON o.idmanutencao = m.idmanutencao
-JOIN equipamento e ON m.idequipamento = e.idequipamento;
+JOIN manutencao m ON o.manutencao_id = m.id;
+
+
 
 /* INDEX /*
 
-CREATE INDEX idx_manutencao_equipamento ON manutencao(idequipamento);
-CREATE INDEX idx_manutencao_tecnico ON manutencao(idtecnico);
-CREATE INDEX idx_falha_equipamento ON falha(idequipamento);
-CREATE INDEX idx_historico_equipamento ON historico(idequipamento);
-CREATE INDEX idx_orcamento_manutencao ON orcamento(idmanutencao);
+CREATE INDEX idx_manutencao_equipamento ON manutencao(equipamento_id);
+CREATE INDEX idx_manutencao_tecnico ON manutencao(tecnico_id);
+CREATE INDEX idx_falha_equipamento ON falha(equipamento_id);
+CREATE INDEX idx_historico_equipamento ON historico(equipamento_id);
+CREATE INDEX idx_orcamento_manutencao ON orcamento(manutencao_id);
+
