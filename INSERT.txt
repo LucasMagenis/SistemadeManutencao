@@ -37,7 +37,7 @@ INSERT INTO Peca (Nome, Descricao, Quantidade_estoque, Custo_unitario) VALUES
 ('Cabo de Força 220V', 'Cabo industrial reforçado', 100, 15.00),
 ('Placa CNC', 'Placa de controle CNC', 10, 800.00);
 
--- Fornecedores
+/* INSERE DADOS DOS FORNECEDORES /*
 INSERT INTO Fornecedor (Nome, CNPJ, Contato) VALUES
 ('TechParts Ltda', '12.345.678/0001-00', 'contato@techparts.com.br'),
 ('Indústria Refrigeração', '98.765.432/0001-99', 'vendas@indrefri.com.br'),
