@@ -1,0 +1,1025 @@
+type: collection.insomnia.rest/5.0
+name: API - Sistema de Manutenção
+meta:
+  id: wrk_a74e0a665180486191ad8833f91bcc4d
+  created: 1750118866801
+  modified: 1750118866801
+collection:
+  - name: API - Sistema de Manutenção
+    meta:
+      id: fld_8ebe578fd44a4593917ca471bd0e6903
+      created: 1750118866804
+      modified: 1750118866804
+      sortKey: -1750118856850
+      description: Coleção de testes da API de Sistema de Manutenção.
+    children:
+      - name: Equipamentos
+        meta:
+          id: fld_025d00e6c416451f896f86ee3eb85ecc
+          created: 1750118866806
+          modified: 1750374708630
+          sortKey: -1750118856849
+        children:
+          - url: http://localhost:8000/equipamentos
+            name: Listar equipamentos
+            meta:
+              id: req_9d8a79af715347bd9b9b91394aec7e07
+              created: 1750118866808
+              modified: 1750627083085
+              isPrivate: false
+              sortKey: -1750118856848
+            method: GET
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/equipamentos/11111111-1111-1111-1111-111111111112
+            name: Buscar equipamentos por ID
+            meta:
+              id: req_f0466c5b15524987af0d0692dff7b084
+              created: 1750118866810
+              modified: 1750628721560
+              isPrivate: false
+              sortKey: -1750118856847
+            method: GET
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/equipamentos
+            name: Criar equipamentos
+            meta:
+              id: req_710de46a36cd4a5492901c8b604ac294
+              created: 1750118866812
+              modified: 1750628757925
+              isPrivate: false
+              sortKey: -1750118856846
+            method: POST
+            body:
+              mimeType: text/plain
+              text: |-2
+                  {
+                    "nome": "Gerador 500W",
+                    "modelo": "GX-500",
+                    "fabricante": "Fabrica Sul"
+                  }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/equipamentos/64c9d535-b552-4a84-b34b-f1f170d32fae
+            name: Atualizar equipamentos
+            meta:
+              id: req_384721e9b25b42dba74f4d8c228466c5
+              created: 1750118866815
+              modified: 1750628789284
+              isPrivate: false
+              sortKey: -1750118856845
+            method: PUT
+            body:
+              mimeType: text/plain
+              text: |-2
+                  {
+                    "nome": "Gerador 500W",
+                    "modelo": "GX-500",
+                    "fabricante": "Fabrica Norte"
+                  }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/equipamentos/64c9d535-b552-4a84-b34b-f1f170d32fae
+            name: Deletar equipamentos
+            meta:
+              id: req_e63b89f87ef9437fa7b58e5c950a6f81
+              created: 1750118866817
+              modified: 1750628805170
+              isPrivate: false
+              sortKey: -1750118856844
+            method: DELETE
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Tecnicos
+        meta:
+          id: fld_89997bb78525409587186825f5fe6573
+          created: 1750118866818
+          modified: 1750118866818
+          sortKey: -1750118856843
+        children:
+          - url: http://localhost:8000/tecnicos
+            name: Listar tecnicos
+            meta:
+              id: req_d182331270004e2ab007c555fcac48b3
+              created: 1750118866819
+              modified: 1750380935987
+              isPrivate: false
+              sortKey: -1750118856842
+            method: GET
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/tecnicos/41cbe06e-9ca0-46b1-bf81-270a5734eb30
+            name: Buscar tecnicos por ID
+            meta:
+              id: req_d32d888bf2c041978b163874b88cb9f1
+              created: 1750118866821
+              modified: 1750381761716
+              isPrivate: false
+              sortKey: -1750118856841
+            method: GET
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/tecnicos
+            name: Criar tecnicos
+            meta:
+              id: req_397550e070e14efbb399fcaf38ef356b
+              created: 1750118866822
+              modified: 1750626902907
+              isPrivate: false
+              sortKey: -1750118856840
+            method: POST
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "nome": "Lucas Vitali",
+                  "especialidade": "Engenheiro",
+                  "contato": "lucas.vitali@email.com"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/tecnicos/c51f9b3c-6d27-46c6-9af5-30205c4d537b
+            name: Atualizar tecnicos
+            meta:
+              id: req_9de6de7a1aff445aa522a0a36e54a33a
+              created: 1750118866824
+              modified: 1750626951957
+              isPrivate: false
+              sortKey: -1750118856839
+            method: PUT
+            body:
+              mimeType: text/plain
+              text: |-
+                { "nome": "Lucas Vitali",
+                 "especialidade": "Engenheiro",
+                 "contato": "lucas.vitali@gmail.com"
+                } 
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/tecnicos/41cbe06e-9ca0-46b1-bf81-270a5734eb30
+            name: Deletar tecnicos
+            meta:
+              id: req_c9c674d59fdc40cb8bf50761a324d69a
+              created: 1750118866825
+              modified: 1750626888255
+              isPrivate: false
+              sortKey: -1750118856838
+            method: DELETE
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Manutencoes
+        meta:
+          id: fld_8b1c86b5671b413f9a348320d41ac7e5
+          created: 1750118866827
+          modified: 1750118866827
+          sortKey: -1750118856837
+        children:
+          - url: http://localhost:8000/manutencoes
+            name: Listar manutencoes
+            meta:
+              id: req_4d3c479f396d42e7979c2fd6324f4df3
+              created: 1750118866830
+              modified: 1750629525892
+              isPrivate: false
+              sortKey: -1750118856836
+            method: GET
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/manutencoes/33333333-3333-3333-3333-333333333331
+            name: Buscar manutencoes por ID
+            meta:
+              id: req_d82d9e2abb7845cebd130030bdf2e73f
+              created: 1750118866832
+              modified: 1750639845564
+              isPrivate: false
+              sortKey: -1750118856835
+            method: GET
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/manutencoes
+            name: Criar manutencoes
+            meta:
+              id: req_ad079e665cac46078ce49909eb576758
+              created: 1750118866833
+              modified: 1750640051785
+              isPrivate: false
+              sortKey: -1750118856834
+            method: POST
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "data": "2025-06-22",
+                  "tipo": "Corretiva",
+                  "descricao": "Troca do motor hidráulico",
+                  "status": "Em andamento",
+                  "idEquipamento": "UUID_DO_EQUIPAMENTO",
+                  "idTecnico": "UUID_DO_TECNICO"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/manutencoes/{id}
+            name: Atualizar manutencoes
+            meta:
+              id: req_0069a7113aa340eb93a4ced5b299adbc
+              created: 1750118866835
+              modified: 1750639959302
+              isPrivate: false
+              sortKey: -1750118856833
+            method: PUT
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "data": "2025-06-23",
+                  "tipo": "Preventiva",
+                  "descricao": "Verificação de válvulas",
+                  "status": "Concluído",
+                  "idEquipamento": "UUID_DO_EQUIPAMENTO",
+                  "idTecnico": "UUID_DO_TECNICO"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/manutencoes/{id}
+            name: Deletar manutencoes
+            meta:
+              id: req_f034f38ee3184abd9164af7233a944b0
+              created: 1750118866836
+              modified: 1750629531525
+              isPrivate: false
+              sortKey: -1750118856832
+            method: DELETE
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Falhas
+        meta:
+          id: fld_3e1061b862eb45da85f3dd20f047838d
+          created: 1750118866838
+          modified: 1750118866838
+          sortKey: -1750118856831
+        children:
+          - url: http://localhost:8000/falhas
+            name: Listar falhas
+            meta:
+              id: req_bf829d86a6c84d72920098d22517c0d0
+              created: 1750118866839
+              modified: 1750642409373
+              isPrivate: false
+              sortKey: -1750118856830
+            method: GET
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/falhas/49c84b3c-aeec-4591-b16f-79a936f2ec08
+            name: Buscar falhas por ID
+            meta:
+              id: req_36ee017326fd422ea4f121f4add648fa
+              created: 1750118866841
+              modified: 1750642823795
+              isPrivate: false
+              sortKey: -1750118856829
+            method: GET
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/falhas
+            name: Criar falhas
+            meta:
+              id: req_4b7112bb0b794f09a784887802e301fd
+              created: 1750118866842
+              modified: 1750642814066
+              isPrivate: false
+              sortKey: -1750118856828
+            method: POST
+            body:
+              mimeType: text/plain
+              text: |
+                {
+                  "equipamentoId": "11111111-1111-1111-1111-111111111111",
+                  "descricaoFalha": "Vazamento de óleo",
+                  "dataFalha": "2025-06-01",
+                  "status": "Aberta"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/falhas/49c84b3c-aeec-4591-b16f-79a936f2ec08
+            name: Atualizar falhas
+            meta:
+              id: req_2f88e7e9144b4943a2424a4f0403e5ce
+              created: 1750118866843
+              modified: 1750642836183
+              isPrivate: false
+              sortKey: -1750118856827
+            method: PUT
+            body:
+              mimeType: text/plain
+              text: |
+                {
+                  "equipamentoId": "11111111-1111-1111-1111-111111111111",
+                  "descricaoFalha": "Vazamento corrigido",
+                  "dataFalha": "2025-06-01",
+                  "status": "Fechada"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/falhas/49c84b3c-aeec-4591-b16f-79a936f2ec08
+            name: Deletar falhas
+            meta:
+              id: req_c865e97888a64983bbf8e6fb0fd2a208
+              created: 1750118866845
+              modified: 1750642845417
+              isPrivate: false
+              sortKey: -1750118856826
+            method: DELETE
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Pecas
+        meta:
+          id: fld_685c5e0fad2043beb1c6bbbeaa357211
+          created: 1750118866847
+          modified: 1750118866847
+          sortKey: -1750118856825
+        children:
+          - url: http://localhost:8000/pecas
+            name: Listar pecas
+            meta:
+              id: req_553909c6d3784d51a9e886beec9fd6c9
+              created: 1750118866848
+              modified: 1750640832752
+              isPrivate: false
+              sortKey: -1750118856824
+            method: GET
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/pecas/37b57495-4e03-4f3f-8f21-1793e8f9b7f5
+            name: Buscar pecas por ID
+            meta:
+              id: req_1671b285e5ee4c28a00f05a991a4f641
+              created: 1750118866850
+              modified: 1750641045673
+              isPrivate: false
+              sortKey: -1750118856823
+            method: GET
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/pecas
+            name: Criar pecas
+            meta:
+              id: req_c3f243df7d8a4701bcdb9ac784095901
+              created: 1750118866852
+              modified: 1750641936808
+              isPrivate: false
+              sortKey: -1750118856822
+            method: POST
+            body:
+              mimeType: text/plain
+              text: |
+                {
+                  "nome": "Sensor de temperatura",
+                  "descricao": "Sensor digital de alta precisão",
+                  "quantidadeEstoque": 25,
+                  "custoUnitario": 65.00
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/pecas/37b57495-4e03-4f3f-8f21-1793e8f9b7f5
+            name: Atualizar pecas
+            meta:
+              id: req_0d573f97540f4db680459cd352355418
+              created: 1750118866853
+              modified: 1750641096980
+              isPrivate: false
+              sortKey: -1750118856821
+            method: PUT
+            body:
+              mimeType: text/plain
+              text: |
+                {
+                  "nome": "Sensor de temperatura atualizado",
+                  "descricao": "Novo sensor digital",
+                  "quantidadeEstoque": 80,
+                  "custoUnitario": 70.00
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/pecas/37b57495-4e03-4f3f-8f21-1793e8f9b7f5
+            name: Deletar pecas
+            meta:
+              id: req_17d9cfbe120b4cffbad84fd738fadce8
+              created: 1750118866854
+              modified: 1750641113803
+              isPrivate: false
+              sortKey: -1750118856820
+            method: DELETE
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Historicos-preventivos
+        meta:
+          id: fld_b69a346df94345b9ac09cb512b6978ef
+          created: 1750118866856
+          modified: 1750118866856
+          sortKey: -1750118856819
+        children:
+          - url: http://localhost:8000/historicos
+            name: Listar historicos-preventivos
+            meta:
+              id: req_bb32dec57ca5478f8744df4348d7b429
+              created: 1750118866857
+              modified: 1750640757455
+              isPrivate: false
+              sortKey: -1750118856818
+            method: GET
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/historicos-preventivos/{id}
+            name: Buscar historicos-preventivos por ID
+            meta:
+              id: req_6b83f18536d8429a8296eea1b8d2e224
+              created: 1750118866858
+              modified: 1750640751457
+              isPrivate: false
+              sortKey: -1750118856817
+            method: GET
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/historicos
+            name: Criar historicos-preventivos
+            meta:
+              id: req_3ebc9f5554f64d8681def64c401673a7
+              created: 1750118866859
+              modified: 1750640748991
+              isPrivate: false
+              sortKey: -1750118856816
+            method: POST
+            body:
+              mimeType: text/plain
+              text: |
+                {
+                  "idEquipamento": "UUID-DO-EQUIPAMENTO",
+                  "tipoManutencao": "Preventiva",
+                  "dataUltimoServico": "2024-06-01",
+                  "dataProximoServico": "2024-12-01"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/historicos/{id}
+            name: Atualizar historicos-preventivos
+            meta:
+              id: req_0f34df716a574b8591a9a5add533768b
+              created: 1750118866861
+              modified: 1750640752062
+              isPrivate: false
+              sortKey: -1750118856815
+            method: PUT
+            body:
+              mimeType: text/plain
+              text: |
+                {
+                  "idEquipamento": "UUID-DO-EQUIPAMENTO",
+                  "tipoManutencao": "Preventiva",
+                  "dataUltimoServico": "2024-06-10",
+                  "dataProximoServico": "2024-12-10"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/historicos/{id}
+            name: Deletar historicos-preventivos
+            meta:
+              id: req_43cd564108cf4e93a576092d49315bb2
+              created: 1750118866862
+              modified: 1750640781106
+              isPrivate: false
+              sortKey: -1750118856814
+            method: DELETE
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Fornecedores
+        meta:
+          id: fld_84e42080fb1c4c50835fd08f5a7e9b8e
+          created: 1750118866864
+          modified: 1750118866864
+          sortKey: -1750118856813
+        children:
+          - url: http://localhost:8000/fornecedor
+            name: Listar fornecedores
+            meta:
+              id: req_1fa4a4c0fb9749b0baee83b146cf6141
+              created: 1750118866865
+              modified: 1750641556397
+              isPrivate: false
+              sortKey: -1750118856812
+            method: GET
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/fornecedor/b4b4143c-9b8b-4684-a106-4ce1755714a0
+            name: Buscar fornecedores por ID
+            meta:
+              id: req_dd4cd9f7fd86479b84026306f05380c5
+              created: 1750118866866
+              modified: 1750641614227
+              isPrivate: false
+              sortKey: -1750118856811
+            method: GET
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/fornecedor
+            name: Criar fornecedores
+            meta:
+              id: req_6e040a4a6f9f44e689fa4edee7135791
+              created: 1750118866868
+              modified: 1750641607276
+              isPrivate: false
+              sortKey: -1750118856810
+            method: POST
+            body:
+              mimeType: text/plain
+              text: |
+                {
+                  "nome": "Peças & Cia",
+                  "cnpj": "12.345.678/0001-01",
+                  "contato": "pecas@cia.com"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/fornecedor/b4b4143c-9b8b-4684-a106-4ce1755714a0
+            name: Atualizar fornecedores
+            meta:
+              id: req_c9dc47ee21f0492796174d99c976d83e
+              created: 1750118866869
+              modified: 1750641635265
+              isPrivate: false
+              sortKey: -1750118856809
+            method: PUT
+            body:
+              mimeType: text/plain
+              text: |
+                {
+                  "nome": "Peças & Cia Atualizada",
+                  "cnpj": "12.345.678/0001-10",
+                  "contato": "novoemail@cia.com"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/fornecedor/b4b4143c-9b8b-4684-a106-4ce1755714a0
+            name: Deletar fornecedores
+            meta:
+              id: req_a9cd5ab8583a4d3cae913007ef489c09
+              created: 1750118866870
+              modified: 1750641665831
+              isPrivate: false
+              sortKey: -1750118856808
+            method: DELETE
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Orcamentos
+        meta:
+          id: fld_eb65dff8ec3848c3b404fa848114a1aa
+          created: 1750118866871
+          modified: 1750118866871
+          sortKey: -1750118856807
+        children:
+          - url: http://localhost:8000/orcamento
+            name: Listar orcamentos
+            meta:
+              id: req_55898524111a4650849df7a0fadf4a2f
+              created: 1750118866872
+              modified: 1750641842000
+              isPrivate: false
+              sortKey: -1750118856806
+            method: GET
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/orcamento/a4af1f31-ff36-4e21-85e0-53418a43fb64
+            name: Buscar orcamentos por ID
+            meta:
+              id: req_efbcf1b105b8433d8b4752952ac34bea
+              created: 1750118866873
+              modified: 1750641891124
+              isPrivate: false
+              sortKey: -1750118856805
+            method: GET
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/orcamento
+            name: Criar orcamentos
+            meta:
+              id: req_14371f0d1910491285e57f8e7746a7ef
+              created: 1750118866874
+              modified: 1750641845842
+              isPrivate: false
+              sortKey: -1750118856804
+            method: POST
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "manutencaoId": "33333333-3333-3333-3333-333333333331",
+                  "descricao": "Orçamento válvula",
+                  "valorTotal": 180.00,
+                  "dataOrcamento": "2025-06-01"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/orcamento/a4af1f31-ff36-4e21-85e0-53418a43fb64
+            name: Atualizar orcamentos
+            meta:
+              id: req_a6073de05cea462098d4ae24c9a5834f
+              created: 1750118866876
+              modified: 1750641905772
+              isPrivate: false
+              sortKey: -1750118856803
+            method: PUT
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "manutencaoId": "33333333-3333-3333-3333-333333333331",
+                  "descricao": "Orçamento válvula",
+                  "valorTotal": 200.00,
+                  "dataOrcamento": "2025-06-01"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8000/orcamento/a4af1f31-ff36-4e21-85e0-53418a43fb64
+            name: Deletar orcamentos
+            meta:
+              id: req_ac8217261c5348e98997bb34b6891ba1
+              created: 1750118866877
+              modified: 1750641921311
+              isPrivate: false
+              sortKey: -1750118856802
+            method: DELETE
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_1730812b3ee58b6d61e75236cdb63f809fef605e
+    created: 1750118868593
+    modified: 1750118868593
+environments:
+  name: Base Environment
+  meta:
+    id: env_1730812b3ee58b6d61e75236cdb63f809fef605e
+    created: 1750118868590
+    modified: 1750118868590
+    isPrivate: false
