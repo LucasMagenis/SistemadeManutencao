@@ -27,8 +27,9 @@ O banco de dados permite:
 - **pgAdmin 4** – Sistema de gerenciamento de banco de dados relacional.
 - **SQL** – Linguagem para criação de tabelas, relacionamentos e scripts de manipulação de dados.
 - **PgAdmin 4** – Interface gráfica para administração do banco de dados.
--  – Para construção do CRUD de interação. ----------
-
+- **Java** – Para construção do CRUD de interação.
+- **Insomnia** - Utilizado para realizar as requisições.
+ 
 ## 📌 Estrutura do Projeto
 
 - Diagrama do Modelo Físico (ER → Físico).
@@ -36,7 +37,8 @@ O banco de dados permite:
 - Script de Inserção de Dados (mínimo 10 registros por tabela).
 - 3 Functions/Procedures, 1 Trigger, 3 Views e Índices otimizados.
 - Justificativa técnica para os objetos do banco.
-- CRUD básico de interação com as tabelas principais.
+- CRUD de interação com as tabelas principais.
+- Arquivo com presset de requisições.
 
 ## 🗃️ Entidades do Sistema
 
